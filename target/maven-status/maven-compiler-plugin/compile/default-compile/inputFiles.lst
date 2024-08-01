@@ -1,0 +1,17 @@
+C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\Application.java
+C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\controller\CustomerController.java
+C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\controller\InvoiceController.java
+C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\controller\ProductController.java
+C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\entity\Customer.java
+C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\entity\Invoice.java
+C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\entity\InvoiceDetails.java
+C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\entity\Product.java
+C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\persistence\CustomerRepository.java
+C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\persistence\InvoiceRepository.java
+C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\persistence\ProductRepository.java
+C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\service\CustomerService.java
+C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\service\CustomerServiceImpl.java
+C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\service\InvoiceService.java
+C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\service\InvoiceServiceImpl.java
+C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\service\ProductService.java
+C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\service\ProductServiceImpl.java
