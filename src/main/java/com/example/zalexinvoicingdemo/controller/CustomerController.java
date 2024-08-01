@@ -30,19 +30,19 @@ public class CustomerController {
     }
 
     // Get a customer by ID
-    @GetMapping("/{id}")
-    public Customer getCustomerById(@PathVariable Long id) {
-        return customerService.getCustomerById(id);
+    @GetMapping("/{accountNo}")
+    public Customer getCustomerById(@PathVariable Long accountNo) {
+        return customerService.getCustomerById(accountNo);
     }
 
     // Update a customer
-    @PutMapping("/{id}")
-    public Customer updateCustomer(@PathVariable Long id, @RequestBody Customer customerDetails) {
-        return customerService.updateCustomer(id, customerDetails);
+    @PutMapping("/{accountNo}")
+    public Customer updateCustomer(@PathVariable Long accountNo, @RequestBody Customer customerDetails) {
+        return customerService.updateCustomer(accountNo, customerDetails);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteCustomer(@PathVariable Long id) {
-        customerService.deleteCustomer(id);
+    @DeleteMapping("/{accountNo}")
+    public void deleteCustomer(@PathVariable Long accountNo) {
+        customerService.deleteCustomer(accountNo);
     }
 }
