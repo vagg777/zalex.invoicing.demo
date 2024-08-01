@@ -120,3 +120,145 @@ Request Body (in JSON format):
 ```sh
 DELETE /api/customers/{accountNo}
 ```
+
+
+### Product Endpoints
+1. Create a new product
+
+```sh
+POST /api/products
+```
+
+Request Body (in JSON format):
+
+```sh
+{
+    "name": "Laptop",
+    "modelNumber": "Lenovo Ideapad Gaming 3",
+    "description": "A high-performance laptop",
+    "price": 900.00
+}
+```
+
+2. Get all products
+
+```sh
+GET /api/products
+```
+
+3. Get a product by ID
+
+
+```sh
+GET /api/products/{id}
+```
+
+4. Update a product
+
+```sh
+PUT /api/products/{id}
+```
+
+Request Body (in JSON format):
+
+```sh
+{
+    "name": "Laptop",
+    "modelNumber": "Lenovo Ideapad Gaming 3",
+    "description": "A mid-range performance laptop",
+    "price": 750.00
+}
+```
+
+5. Delete a product
+
+```sh
+DELETE /api/products/{id}
+```
+
+
+### Invoice Endpoints
+1. Create a new invoice
+
+```sh
+POST /api/invoices
+```
+
+Request Body (in JSON):
+
+```sh
+{
+    "dateCreated": "2024-08-01",
+    "customer_id": 1
+}
+```
+
+2. Get all invoices
+
+```sh
+GET /api/invoices
+```
+
+3. Get an invoice by number
+
+```sh
+GET /api/invoices/{number}
+```
+
+4. Update an invoice
+
+```sh
+PUT /api/invoices/{number}
+```
+
+Request Body (in JSON):
+
+```sh
+{
+    "dateCreated": "2024-08-01",
+    "customer_id": 1
+}
+```
+
+5. Delete an invoice
+
+```sh
+DELETE /api/invoices/{number}
+```
+
+### Invoice Details Endpoints
+1. Add an invoice detail to an invoice
+
+```sh
+POST /api/invoices/{invoiceId}/details
+```
+
+Request Body (in JSON):
+
+```sh
+{
+    "product_id": 1,
+    "quantity": 1
+}
+```
+
+2. Update an invoice detail
+
+```sh
+PUT /api/invoices/{invoiceId}/details/{detailId}
+```
+
+Request Body (in JSON):
+
+```sh
+{
+    "product_id": 1,
+    "quantity": 2
+}
+```
+
+3. Delete an invoice detail
+
+```sh
+DELETE /api/invoices/{invoiceId}/details/{detailId}
+```
