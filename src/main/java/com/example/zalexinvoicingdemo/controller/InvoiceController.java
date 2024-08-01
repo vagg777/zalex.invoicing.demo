@@ -1,5 +1,6 @@
 package com.example.zalexinvoicingdemo.controller;
 
+import com.example.zalexinvoicingdemo.dto.InvoiceDto;
 import com.example.zalexinvoicingdemo.entity.Invoice;
 import com.example.zalexinvoicingdemo.service.InvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,25 +20,25 @@ public class InvoiceController {
 
     // Create a new invoice
     @PostMapping
-    public Invoice createInvoice(@RequestBody Invoice invoice) {
+    public InvoiceDto createInvoice(@RequestBody Invoice invoice) {
         return invoiceService.saveInvoice(invoice);
     }
 
     // Get all invoices
     @GetMapping
-    public List<Invoice> getAllInvoices() {
+    public List<InvoiceDto> getAllInvoices() {
         return invoiceService.getAllInvoices();
     }
 
     // Get an invoice by ID
     @GetMapping("/{id}")
-    public Invoice getInvoiceById(@PathVariable Long id) {
+    public InvoiceDto getInvoiceById(@PathVariable Long id) {
         return invoiceService.getInvoiceById(id);
     }
 
     // Update an invoice
     @PutMapping("/{id}")
-    public Invoice updateInvoice(@PathVariable Long id, @RequestBody Invoice invoiceDetails) {
+    public InvoiceDto updateInvoice(@PathVariable Long id, @RequestBody Invoice invoiceDetails) {
         return invoiceService.updateInvoice(id, invoiceDetails);
     }
 
@@ -47,6 +48,4 @@ public class InvoiceController {
         invoiceService.deleteInvoice(id);
     }
 
-
 }
-

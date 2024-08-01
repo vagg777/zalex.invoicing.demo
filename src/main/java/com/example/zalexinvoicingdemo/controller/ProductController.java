@@ -1,5 +1,6 @@
 package com.example.zalexinvoicingdemo.controller;
 
+import com.example.zalexinvoicingdemo.dto.ProductDto;
 import com.example.zalexinvoicingdemo.entity.Product;
 import com.example.zalexinvoicingdemo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,25 +20,25 @@ public class ProductController {
 
     // Create a new product
     @PostMapping
-    public Product createProduct(@RequestBody Product product) {
+    public ProductDto createProduct(@RequestBody Product product) {
         return productService.saveProduct(product);
     }
 
     // Get all products
     @GetMapping
-    public List<Product> getAllProducts() {
+    public List<ProductDto> getAllProducts() {
         return productService.getAllProducts();
     }
 
     // Get a product by ID
     @GetMapping("/{id}")
-    public Product getProductById(@PathVariable Long id) {
+    public ProductDto getProductById(@PathVariable Long id) {
         return productService.getProductById(id);
     }
 
     // Update a product
     @PutMapping("/{id}")
-    public Product updateProduct(@PathVariable Long id, @RequestBody Product productDetails) {
+    public ProductDto updateProduct(@PathVariable Long id, @RequestBody Product productDetails) {
         return productService.updateProduct(id, productDetails);
     }
 

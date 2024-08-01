@@ -1,5 +1,6 @@
 package com.example.zalexinvoicingdemo.controller;
 
+import com.example.zalexinvoicingdemo.dto.CustomerDto;
 import com.example.zalexinvoicingdemo.entity.Customer;
 import com.example.zalexinvoicingdemo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,25 +20,25 @@ public class CustomerController {
 
     // Create a new customer
     @PostMapping
-    public Customer createCustomer(@RequestBody Customer customer) {
+    public CustomerDto createCustomer(@RequestBody Customer customer) {
         return customerService.saveCustomer(customer);
     }
 
     // Get all customers
     @GetMapping
-    public List<Customer> getAllCustomers() {
+    public List<CustomerDto> getAllCustomers() {
         return customerService.getAllCustomers();
     }
 
     // Get a customer by ID
     @GetMapping("/{accountNo}")
-    public Customer getCustomerById(@PathVariable Long accountNo) {
+    public CustomerDto getCustomerById(@PathVariable Long accountNo) {
         return customerService.getCustomerById(accountNo);
     }
 
     // Update a customer
     @PutMapping("/{accountNo}")
-    public Customer updateCustomer(@PathVariable Long accountNo, @RequestBody Customer customerDetails) {
+    public CustomerDto updateCustomer(@PathVariable Long accountNo, @RequestBody Customer customerDetails) {
         return customerService.updateCustomer(accountNo, customerDetails);
     }
 

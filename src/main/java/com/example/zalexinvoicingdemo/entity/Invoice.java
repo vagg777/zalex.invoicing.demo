@@ -3,7 +3,6 @@ package com.example.zalexinvoicingdemo.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,7 +17,7 @@ public class Invoice {
     private Customer customer;
 
     @OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<InvoiceDetails> items = new ArrayList<>();
+    private List<InvoiceDetails> items;
 
     public double getTotalAmount() {
         double totalAmount = 0.0;

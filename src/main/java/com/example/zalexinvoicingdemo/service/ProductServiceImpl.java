@@ -1,12 +1,19 @@
 package com.example.zalexinvoicingdemo.service;
 
 
+import com.example.zalexinvoicingdemo.dto.InvoiceDto;
+import com.example.zalexinvoicingdemo.dto.ProductDto;
+import com.example.zalexinvoicingdemo.entity.Invoice;
 import com.example.zalexinvoicingdemo.entity.Product;
 import com.example.zalexinvoicingdemo.persistence.ProductRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import static com.example.zalexinvoicingdemo.mapper.Mapper.toInvoiceDto;
+import static com.example.zalexinvoicingdemo.mapper.Mapper.toProductDto;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -18,23 +25,28 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product saveProduct(Product product) {
-        return productRepository.save(product);
+    public ProductDto saveProduct(Product product) {
+        return toProductDto(productRepository.save(product));
     }
 
     @Override
-    public List<Product> getAllProducts() {
-        return productRepository.findAll();
+    public List<ProductDto> getAllProducts() {
+        List<Product> products = productRepository.findAll();
+        List<ProductDto> productDtos = new ArrayList<>();
+        for (Product product : products) {
+            productDtos.add(toProductDto(product));
+        }
+        return productDtos;
     }
 
     @Override
-    public Product getProductById(Long id) {
+    public ProductDto getProductById(Long id) {
         Optional<Product> product = productRepository.findById(id);
-        return product.orElse(null);
+        return toProductDto(product.orElse(null));
     }
 
     @Override
-    public Product updateProduct(Long id, Product productDetails) {
+    public ProductDto updateProduct(Long id, Product productDetails) {
         Optional<Product> product = productRepository.findById(id);
         if (product.isPresent()) {
             Product existingProduct = product.get();
@@ -42,7 +54,7 @@ public class ProductServiceImpl implements ProductService {
             existingProduct.setModelNumber(productDetails.getModelNumber());
             existingProduct.setDescription(productDetails.getDescription());
             existingProduct.setPrice(productDetails.getPrice());
-            return productRepository.save(existingProduct);
+            return toProductDto(productRepository.save(existingProduct));
         } else {
             return null;
         }

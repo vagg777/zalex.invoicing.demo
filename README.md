@@ -19,8 +19,6 @@ This demo project is a Spring Boot application based on the MVC approach for man
     - [Invoice Endpoints](#invoice-endpoints)
     - [Invoice Details Endpoints](#invoice-details-endpoints)
   - [Example SQL Data](#example-sql-data)
-  - [Running Tests](#running-tests)
-  - [License](#license)
 
 ## Requirements
 
@@ -261,4 +259,36 @@ Request Body (in JSON):
 
 ```sh
 DELETE /api/invoices/{invoiceId}/details/{detailId}
+```
+
+## Example SQL Data
+To ease the population of the MySQL database, the following insertions are provided to assist for testing purposes.
+
+```sh
+-- Insert data into Customer table
+INSERT INTO Customer (account_no, first_name, middle_name, last_name, address, phone) VALUES
+(1, 'Evangelos', 'Athanasios', 'Michos', 'Georgiou Str', '+35799242276'),
+(2, 'Nikos', 'Georgiou', 'Nikolaou', 'Lordos Court, 8017', '+35799249754'),
+(3, 'Jim', 'Nick', 'Galis', 'Artemidos 92, Nicosia', '+35799568791');
+
+-- Correct insertions for the Product table assuming 'id' is auto-increment
+INSERT INTO Product (name, model_number, description, price) VALUES
+('Laptop', 'Lenovo Ideapad Gaming 3', 'A high-performance laptop', 900.00),
+('Smartphone', 'Samsung Galaxy S40', 'A latest-gen smartphone', 1200.00),
+('Tablet', 'Huawei Mediapad T10 Pro', 'A lightweight tablet', 200.00);
+
+-- Insert data into Invoice table
+INSERT INTO Invoice (number, date_created, customer_id) VALUES
+(1, '2024-08-01', 1),
+(2, '2024-08-02', 2),
+(3, '2024-08-03', 3);
+
+-- Insert data into InvoiceDetails table
+INSERT INTO Invoice_details (id, product_id, quantity, invoice_id) VALUES
+(1, 1, 1, 1),
+(2, 2, 2, 1),
+(3, 3, 1, 2),
+(4, 1, 1, 3),
+(5, 2, 1, 3),
+(6, 3, 1, 3);
 ```

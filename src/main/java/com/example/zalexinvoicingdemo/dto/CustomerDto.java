@@ -1,15 +1,8 @@
-package com.example.zalexinvoicingdemo.entity;
+package com.example.zalexinvoicingdemo.dto;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-public class Customer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CustomerDto {
     private Long accountNo;
 
     private String firstName;
@@ -17,16 +10,14 @@ public class Customer {
     private String lastName;
     private String address;
     private String phone;
+    private List<InvoiceDto> invoices;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Invoice> invoices;
+    public Long getAccountNo() {
+        return accountNo;
+    }
 
-    public double getAccountBalance() {
-        double accountBalance = 0.0;
-        for (Invoice invoice : invoices) {
-            accountBalance += invoice.getTotalAmount();
-        }
-        return accountBalance;
+    public void setAccountNo(Long accountNo) {
+        this.accountNo = accountNo;
     }
 
     public String getFirstName() {
@@ -35,14 +26,6 @@ public class Customer {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    public Long getAccountNo() {
-        return accountNo;
-    }
-
-    public void setAccountNo(Long accountNo) {
-        this.accountNo = accountNo;
     }
 
     public String getMiddleName() {
@@ -77,12 +60,11 @@ public class Customer {
         this.phone = phone;
     }
 
-    public List<Invoice> getInvoices() {
+    public List<InvoiceDto> getInvoices() {
         return invoices;
     }
 
-    public void setInvoices(List<Invoice> invoices) {
+    public void setInvoices(List<InvoiceDto> invoices) {
         this.invoices = invoices;
     }
 }
-
