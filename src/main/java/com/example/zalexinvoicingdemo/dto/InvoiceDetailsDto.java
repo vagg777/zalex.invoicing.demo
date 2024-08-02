@@ -2,7 +2,7 @@ package com.example.zalexinvoicingdemo.dto;
 
 public class InvoiceDetailsDto {
     private Long id;
-    private ProductDto product;
+    private Long productId; // Only the ID to solve recursion
     private int quantity;
     private InvoiceDto invoice;
     private double amount;
@@ -15,12 +15,12 @@ public class InvoiceDetailsDto {
         this.id = id;
     }
 
-    public ProductDto getProduct() {
-        return product;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setProduct(ProductDto product) {
-        this.product = product;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
     public int getQuantity() {

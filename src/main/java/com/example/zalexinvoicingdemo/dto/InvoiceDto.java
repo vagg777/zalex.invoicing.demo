@@ -6,7 +6,7 @@ import java.util.List;
 public class InvoiceDto {
     private Long number;
     private LocalDate dateCreated;
-    private CustomerDto customer;
+    private Long customerId; // Only the ID to solve recursion problem
 
     private List<InvoiceDetailsDto> items;
     private double totalAmount;
@@ -27,14 +27,6 @@ public class InvoiceDto {
         this.dateCreated = dateCreated;
     }
 
-    public CustomerDto getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(CustomerDto customer) {
-        this.customer = customer;
-    }
-
     public List<InvoiceDetailsDto> getItems() {
         return items;
     }
@@ -45,6 +37,14 @@ public class InvoiceDto {
 
     public double getTotalAmount() {
         return totalAmount;
+    }
+
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 
     public void setTotalAmount(double totalAmount) {

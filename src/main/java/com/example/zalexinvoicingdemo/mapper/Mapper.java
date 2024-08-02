@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Mapper {
-    public static CustomerDto toCustomerDto(Customer customer) {
 
+    public static CustomerDto toCustomerDto(Customer customer) {
         CustomerDto dto = new CustomerDto();
         dto.setAccountNo(customer.getAccountNo());
         dto.setFirstName(customer.getFirstName());
@@ -26,7 +26,10 @@ public class Mapper {
         List<InvoiceDto> invoicesDto = new ArrayList<>();
         if (customer.getInvoices() != null) {
             for (Invoice invoice : customer.getInvoices()) {
-                invoicesDto.add(toInvoiceDto(invoice, false));
+                //invoicesDto.add(toInvoiceDto(invoice, false));
+                InvoiceDto invoiceDto = toInvoiceDto(invoice, false);
+                invoiceDto.setCustomerId(customer.getAccountNo());
+                invoicesDto.add(invoiceDto);
             }
         }
         dto.setInvoices(invoicesDto);
@@ -44,10 +47,14 @@ public class Mapper {
         customer.setAddress(customerDto.getAddress());
         customer.setPhone(customerDto.getPhone());
 
+
         List<Invoice> invoices = new ArrayList<>();
         if (customerDto.getInvoices() != null) {
             for (InvoiceDto invoiceDto : customerDto.getInvoices()) {
-                invoices.add(toInvoiceEntity(invoiceDto, false));
+                //invoices.add(toInvoiceEntity(invoiceDto, false));
+                Invoice invoice = toInvoiceEntity(invoiceDto, false);
+                invoice.setCustomer(customer);
+                invoices.add(invoice);
             }
         }
         customer.setInvoices(invoices);
@@ -61,13 +68,18 @@ public class Mapper {
         dto.setDateCreated(invoice.getDateCreated());
 
         if (includeCustomer && invoice.getCustomer() != null) {
-            dto.setCustomer(toCustomerDto(invoice.getCustomer()));
+            dto.setCustomerId(invoice.getCustomer().getAccountNo());
+        } else {
+            dto.setCustomerId(null);
         }
 
         List<InvoiceDetailsDto> detailsDto = new ArrayList<>();
         if (invoice.getItems() != null) {
             for (InvoiceDetails details : invoice.getItems()) {
-                detailsDto.add(toInvoiceDetailsDto(details, false));
+                //detailsDto.add(toInvoiceDetailsDto(details, false));
+                InvoiceDetailsDto detailsDtoItem = toInvoiceDetailsDto(details, false);
+                detailsDtoItem.setProductId(details.getProduct().getId());
+                detailsDto.add(detailsDtoItem);
             }
         }
         dto.setItems(detailsDto);
@@ -80,14 +92,19 @@ public class Mapper {
         invoice.setNumber(invoiceDto.getNumber());
         invoice.setDateCreated(invoiceDto.getDateCreated());
 
-        if (includeCustomer && invoiceDto.getCustomer() != null) {
-            invoice.setCustomer(toCustomerEntity(invoiceDto.getCustomer()));
+        if (includeCustomer && invoiceDto.getCustomerId() != null) {
+            //invoice.setCustomer(toCustomerEntity(invoiceDto.getCustomer()));
+            Customer customer = new Customer();
+            customer.setAccountNo(invoiceDto.getCustomerId());
+            invoice.setCustomer(customer);
         }
 
         List<InvoiceDetails> detailsList = new ArrayList<>();
         if (invoiceDto.getItems() != null) {
             for (InvoiceDetailsDto detailsDto : invoiceDto.getItems()) {
-                detailsList.add(toInvoiceDetailsEntity(detailsDto, false));
+                InvoiceDetails details = toInvoiceDetailsEntity(detailsDto, false);
+                details.setInvoice(invoice);
+                detailsList.add(details);
             }
         }
         invoice.setItems(detailsList);
@@ -98,7 +115,7 @@ public class Mapper {
     public static InvoiceDetailsDto toInvoiceDetailsDto(InvoiceDetails details, boolean includeInvoice) {
         InvoiceDetailsDto dto = new InvoiceDetailsDto();
         dto.setId(details.getId());
-        dto.setProduct(toProductDto(details.getProduct()));
+        dto.setProductId(details.getProduct().getId());
         dto.setQuantity(details.getQuantity());
         dto.setAmount(details.getAmount());
 
@@ -113,7 +130,10 @@ public class Mapper {
         InvoiceDetails details = new InvoiceDetails();
         details.setId(detailsDto.getId());
         details.setQuantity(detailsDto.getQuantity());
-        details.setProduct(toProductEntity(detailsDto.getProduct()));
+
+        Product product = new Product();
+        product.setId(detailsDto.getProductId());
+        details.setProduct(product);
 
         if (includeInvoice && detailsDto.getInvoice() != null) {
             details.setInvoice(toInvoiceEntity(detailsDto.getInvoice(), false));
