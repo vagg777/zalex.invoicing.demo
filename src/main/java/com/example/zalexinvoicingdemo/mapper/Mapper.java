@@ -30,6 +30,7 @@ public class Mapper {
             }
         }
         dto.setInvoices(invoicesDto);
+        dto.setAccountBalance(customer.getAccountBalance());
 
         return dto;
     }

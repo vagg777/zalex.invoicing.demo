@@ -12,6 +12,8 @@ public class CustomerDto {
     private String address;
     private String phone;
     private List<InvoiceDto> invoices;
+    private double accountBalance; // Add this field
+
 
     public Long getAccountNo() {
         return accountNo;
@@ -68,4 +70,19 @@ public class CustomerDto {
     public void setInvoices(List<InvoiceDto> invoices) {
         this.invoices = invoices;
     }
+
+    public double getAccountBalance() {
+        return accountBalance;
+    }
+
+    public void setAccountBalance(double accountBalance) {
+        double balance = 0.0;
+        if (invoices != null) {
+            for (InvoiceDto invoice : invoices) {
+                balance += invoice.getTotalAmount();
+            }
+        }
+        this.accountBalance = balance;
+    }
+
 }
