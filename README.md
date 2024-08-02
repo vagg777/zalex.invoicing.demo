@@ -31,7 +31,7 @@ This demo project is a Spring Boot application based on the MVC approach for man
 ## Requirements
 
 - Java 17 or higher (<em>developed using Java 21</em>)
-- Maven
+- Apache Maven 3.6.3 or higher
 - MySQL
 - IDE used: IntelliJ IDEA
 
@@ -56,7 +56,7 @@ FLUSH PRIVILEGES;
 
 <em>This step is needed as Spring Boot can create/update/delete schemas but not databases, thus we need to create the database beforehand</em>.
 
-### For MySQL Database
+### Configure Application Properties
 Add the following properties to src/main/resources/application.properties:
 
 ```sh
@@ -72,6 +72,9 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 ```
+### Run the application
+Use MAVEN to clean and install the project.
+Then, run the application through Spring Boot.
 
 ## Project Structure
 
@@ -338,8 +341,11 @@ INSERT INTO Invoice_details (id, product_id, quantity, invoice_id) VALUES
 ```
 
 ## Generated Classes
-The generated classes are located under
+The generated classes are located under:
 ```sh 
 target/classes/com
 ```
-folder
+The generated JAR file is located under:
+```sh 
+target
+```

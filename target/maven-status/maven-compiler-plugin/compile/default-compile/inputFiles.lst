@@ -2,10 +2,15 @@ C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexin
 C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\controller\CustomerController.java
 C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\controller\InvoiceController.java
 C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\controller\ProductController.java
+C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\dto\CustomerDto.java
+C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\dto\InvoiceDetailsDto.java
+C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\dto\InvoiceDto.java
+C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\dto\ProductDto.java
 C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\entity\Customer.java
 C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\entity\Invoice.java
 C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\entity\InvoiceDetails.java
 C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\entity\Product.java
+C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\mapper\Mapper.java
 C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\persistence\CustomerRepository.java
 C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\persistence\InvoiceRepository.java
 C:\Users\Public\Documents\zalex.invoicing.demo\src\main\java\com\example\zalexinvoicingdemo\persistence\ProductRepository.java

@@ -23,13 +23,13 @@ public class Mapper {
         dto.setAddress(customer.getAddress());
         dto.setPhone(customer.getPhone());
 
-        List<InvoiceDto> invoiceDtos = new ArrayList<>();
+        List<InvoiceDto> invoicesDto = new ArrayList<>();
         if (customer.getInvoices() != null) {
             for (Invoice invoice : customer.getInvoices()) {
-                invoiceDtos.add(toInvoiceDto(invoice, false));
+                invoicesDto.add(toInvoiceDto(invoice, false));
             }
         }
-        dto.setInvoices(invoiceDtos);
+        dto.setInvoices(invoicesDto);
 
         return dto;
     }
@@ -63,13 +63,13 @@ public class Mapper {
             dto.setCustomer(toCustomerDto(invoice.getCustomer()));
         }
 
-        List<InvoiceDetailsDto> detailsDtos = new ArrayList<>();
+        List<InvoiceDetailsDto> detailsDto = new ArrayList<>();
         if (invoice.getItems() != null) {
             for (InvoiceDetails details : invoice.getItems()) {
-                detailsDtos.add(toInvoiceDetailsDto(details, false));
+                detailsDto.add(toInvoiceDetailsDto(details, false));
             }
         }
-        dto.setItems(detailsDtos);
+        dto.setItems(detailsDto);
         dto.setTotalAmount(invoice.getTotalAmount());
         return dto;
     }
