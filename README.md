@@ -13,12 +13,20 @@ This demo project is a Spring Boot application based on the MVC approach for man
     - [Set Up the Database](#set-up-the-database)
     - [Configure Application Properties](#configure-application-properties)
     - [Run the Application](#run-the-application)
+  - [Project Structure](#project-structure)
+    - [Controller](#controller)
+    - [Dto](#dto)
+    - [Entity](#entity)
+    - [Mapper](#mapper)
+    - [Persistence](#persistence)
+    - [Service](#service)
   - [API Endpoints](#api-endpoints)
     - [Customer Endpoints](#customer-endpoints)
     - [Product Endpoints](#product-endpoints)
     - [Invoice Endpoints](#invoice-endpoints)
     - [Invoice Details Endpoints](#invoice-details-endpoints)
   - [Example SQL Data](#example-sql-data)
+  - [Generated Classes](#generated-classes)
 
 ## Requirements
 
@@ -61,9 +69,45 @@ spring.datasource.password=zalex
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
 # JPA and Hibernate Configuration
-spring.jpa.hibernate.ddl-auto=create
+spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 ```
+
+## Project Structure
+
+### Controller
+* CustomerController: Handles HTTP requests related to customer operations
+* InvoiceController: Handles HTTP requests related to invoice operations
+* ProductController: Handles HTTP requests concerning product operations
+
+### Dto
+* CustomerDto: Data Transfer Object for customer data
+* InvoiceDetailsDto: Data Transfer Object for invoice detail data
+* InvoiceDto: Data Transfer Object for invoice data
+* ProductDto: Data Transfer Object for product data
+
+### Entity
+* Customer: Entity class representing the customer in the database
+* Invoice: Entity class representing an invoice
+* InvoiceDetails: Entity class for the details of an invoice
+* Product: Entity class for products
+
+### Mapper
+* Mapper: Contains methods for mapping between entities and DTOs (bi-directional)
+
+### Persistence
+* CustomerRepository: Interface for customer database operations
+* InvoiceRepository: Interface for invoice database operations
+* ProductRepository: Interface for product database operations
+
+### Service
+* CustomerService: Interface for customer-related business logic
+* CustomerServiceImpl: Implementation of customer-related business logic
+* InvoiceService: Interface for invoice-related business logic
+* InvoiceServiceImpl: Implementation of invoice-related business logic
+* ProductService: Interface for product-related business logic
+* ProductServiceImpl: Implementation of product-related business logic
+
 
 ## API Endpoints
 ### Customer Endpoints
@@ -292,3 +336,10 @@ INSERT INTO Invoice_details (id, product_id, quantity, invoice_id) VALUES
 (5, 2, 1, 3),
 (6, 3, 1, 3);
 ```
+
+## Generated Classes
+The generated classes are located under
+```sh 
+target/classes/com
+```
+folder

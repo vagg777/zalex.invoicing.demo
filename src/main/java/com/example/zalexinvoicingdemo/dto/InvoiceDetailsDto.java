@@ -1,10 +1,5 @@
 package com.example.zalexinvoicingdemo.dto;
 
-import com.example.zalexinvoicingdemo.entity.Invoice;
-import com.example.zalexinvoicingdemo.entity.Product;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-
 public class InvoiceDetailsDto {
     private Long id;
     private ProductDto product;

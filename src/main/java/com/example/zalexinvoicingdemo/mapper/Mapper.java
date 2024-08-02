@@ -14,6 +14,7 @@ import java.util.List;
 
 public class Mapper {
     public static CustomerDto toCustomerDto(Customer customer) {
+
         CustomerDto dto = new CustomerDto();
         dto.setAccountNo(customer.getAccountNo());
         dto.setFirstName(customer.getFirstName());

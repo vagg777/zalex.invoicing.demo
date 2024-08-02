@@ -3,6 +3,7 @@ package com.example.zalexinvoicingdemo.dto;
 import java.util.List;
 
 public class CustomerDto {
+
     private Long accountNo;
 
     private String firstName;

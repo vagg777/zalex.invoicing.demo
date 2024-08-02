@@ -7,6 +7,7 @@ public class InvoiceDto {
     private Long number;
     private LocalDate dateCreated;
     private CustomerDto customer;
+
     private List<InvoiceDetailsDto> items;
     private double totalAmount;
 
@@ -49,4 +50,5 @@ public class InvoiceDto {
     public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
     }
+
 }
