@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  # MySQL Database Service
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: zalex
+      MYSQL_USER: zalex
+      MYSQL_PASSWORD: zalex
+      MYSQL_ROOT_PASSWORD: zalex
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql  # Ensures data persistence across container restarts
+    networks:
+      - spring-boot-network
+
+  # Spring Boot Application Service
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/zalex
+      SPRING_DATASOURCE_USERNAME: zalex
+      SPRING_DATASOURCE_PASSWORD: zalex
+    depends_on:
+      - db
+    networks:
+      - spring-boot-network
+
+# Define a volume for persistent data storage
+volumes:
+  db_data:
+
+# Define a shared network for both services
+networks:
+  spring-boot-network:
