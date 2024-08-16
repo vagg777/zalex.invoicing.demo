@@ -15,6 +15,11 @@ services:
       - db_data:/var/lib/mysql  # Ensures data persistence across container restarts
     networks:
       - spring-boot-network
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   # Spring Boot Application Service
   app:
@@ -29,6 +34,7 @@ services:
       - db
     networks:
       - spring-boot-network
+
 
 # Define a volume for persistent data storage
 volumes:
